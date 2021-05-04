@@ -1,0 +1,43 @@
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:destinationdb
+#    driverClassName: org.h2.Driver
+#    username: admin
+#    password: admin
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#  h2:
+#    console:
+#      enabled: true
+  application:
+    name: destinationEurekaClient
+    
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    preferIpAddress: true
+    
+server:
+  port: 8081
+  
+#destRibbon:
+#  ribbon:
+#    eureka:
+#      enabled: false
+#    listOfServers: http://localhost:8082//destinations,http://localhost:8083//destinations
+#destinationEurekaClient:
+#  default:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 4
+      metics:
+        rollingStats:
+          timeInMilliseconds: 10000
+        errorThresholdPercentage: 50
+        sleepWindowInMilliseconds: 60000                        
